@@ -135,11 +135,12 @@ def display_results(results):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print("使用方法: python script.py <SFEN>")
         sys.exit(1)
 
-    sfen = sys.argv[1]
+    # コマンドライン引数を空白で結合してSFENを作成
+    sfen = " ".join(sys.argv[1:])
     driver = setup_driver()
     try:
         results = search_position(sfen, driver)
